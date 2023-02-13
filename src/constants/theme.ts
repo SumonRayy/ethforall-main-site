@@ -35,6 +35,12 @@ const theme = {
 
       whiteDark: "#e5e5e5",
       blackDark: "#0e0b11",
+
+      bgLinearGradient1: `      
+      radial-gradient(at 0% 39%, hsla(319,97%,44%,1) 0px, transparent 50%),
+      radial-gradient(at 84% 33%, hsla(359,62%,50%,1) 0px, transparent 50%),
+      radial-gradient(at 76% 90%, hsla(65,100%,50%,0.96) 0px, transparent 50%),
+      radial-gradient(at 18% 96%, hsla(15,100%,50%,1) 0px, transparent 50%);`,      
     },
     text: {},
     border: {},
