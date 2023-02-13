@@ -6,9 +6,8 @@ import theme from "./constants/theme";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles>
-        <Outlet />
-      </GlobalStyles>
+      <GlobalStyles />
+      <Outlet />
     </ThemeProvider>
   );
 }
