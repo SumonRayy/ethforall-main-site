@@ -54,7 +54,7 @@ const FirstSection = styled.section`
 
     width: 82%;
 
-    transition: all 2s ease-in-out;
+    transition: all 1.2s ease-in-out;
 
     svg {
       width: 100%;
@@ -63,7 +63,7 @@ const FirstSection = styled.section`
       color: ${({ theme }) => theme.colors.background.white};
       opacity: 0.3;
 
-      transition: all 2s ease-in-out;
+      transition: all 1.2s ease-in-out;
       animation: rotate 200s linear infinite;
 
       filter: blur(0.08rem);
@@ -95,7 +95,7 @@ const FirstSection = styled.section`
 
     color: rgba(255, 255, 255, 0.6);
 
-    transition: all 2s ease-in-out;
+    transition: all 1.2s ease-in-out;
 
     position: absolute;
     bottom: 5%;
@@ -106,8 +106,9 @@ const FirstSection = styled.section`
     width: 100%;
     transform: translateY(10px);
 
-    color: transparent;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    color: white;
+    opacity: 0.8;
+    text-shadow: 0 0 20px #000000;
 
     button {
       margin-top: 2rem;
@@ -123,7 +124,7 @@ const FirstSection = styled.section`
       letter-spacing: 0.1rem;
       text-align: center;
       font-family: ${({ theme }) => theme.fonts.fontFamilies.tertiary};
-      transition: all 2s 0.3s ease-in-out;
+      transition: all 1.2s 0.3s ease-in-out;
       filter: blur(0.08rem);
       opacity: 0.5;
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
@@ -151,9 +152,8 @@ const FirstSection = styled.section`
 
     h1 {
       transform: translateY(0);
-      color: white;
+      opacity: 1;
       text-shadow: 0 0 10px rgb(255, 255, 255);
-
       button {
         filter: blur(0rem);
         opacity: 1;
