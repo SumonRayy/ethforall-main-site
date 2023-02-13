@@ -33,14 +33,14 @@ const theme = {
       whiteLight: "#f5f5f5",
       blackLight: "#010101",
 
-      whiteDark: "#e5e5e5",
+      whiteDark: "#c5c5c5",
       blackDark: "#0e0b11",
 
       bgLinearGradient1: `      
       radial-gradient(at 0% 39%, hsla(319,97%,44%,1) 0px, transparent 50%),
       radial-gradient(at 84% 33%, hsla(359,62%,50%,1) 0px, transparent 50%),
       radial-gradient(at 76% 90%, hsla(65,100%,50%,0.96) 0px, transparent 50%),
-      radial-gradient(at 18% 96%, hsla(15,100%,50%,1) 0px, transparent 50%);`,      
+      radial-gradient(at 18% 96%, hsla(15,100%,50%,1) 0px, transparent 50%);`,
     },
     text: {},
     border: {},
@@ -53,6 +53,7 @@ const theme = {
       primary: "Nunito, sans-serif",
       secondary: "Roboto, sans-serif",
       tertiary: "Montserrat, sans-serif",
+      quaternary: "Cinzel Decorative, cursive",
     },
   },
   animations: {},
@@ -71,6 +72,7 @@ const theme = {
   transitions: {
     transition1: "all 0.1s ease-in-out",
     transition3: "all 0.3s ease-in-out",
+    transition5: "all 0.5s ease-in-out",
   },
 };
 

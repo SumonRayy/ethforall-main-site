@@ -1,25 +1,26 @@
 import styled from "styled-components";
-import { BiIdCard } from "react-icons/bi";
+import { TbCircles } from "react-icons/tb";
 
 function NavBar() {
   return (
     <NavStyles>
       <div className="logo">
-        <BiIdCard size={45} /> <span>Parichay</span> 
+        <TbCircles size={45} />
+        <span>parichay</span>
       </div>
 
       <ul>
         <li>
-            <a href="#hero">Get Started</a>
+          <a href="#hero">The Idea</a>
         </li>
         <li>
-            <a href="#hero">How to?</a>
+          <a href="#hero">How to?</a>
         </li>
         <li>
-            <a href="#hero">Team</a>
+          <a href="#hero">Team</a>
         </li>
         <li>
-            <a href="#hero">Contact</a>
+          <a href="#hero">Contact</a>
         </li>
       </ul>
     </NavStyles>
@@ -29,6 +30,7 @@ function NavBar() {
 export default NavBar;
 
 const NavStyles = styled.nav`
+  z-index: 100;
   width: 100%;
   /* border: 2px solid #fff; */
   padding: 2rem 4rem;
@@ -41,25 +43,66 @@ const NavStyles = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 13%;
-    color: ${({theme}) => theme.colors.background.whiteDark};
+    flex: 0.32;
+    color: ${({ theme }) => theme.colors.background.whiteLight};
+    transition: all 0.3s ease-in-out;
 
     span {
-        font-family: ${({ theme }) => theme.fonts.fontFamilies.primary};
-        font-size: 2rem;
-        color: ${({theme}) => theme.colors.palette.quinaryLight}
+      font-family: ${({ theme }) => theme.fonts.fontFamilies.tertiary};
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.1rem;
+    }
+
+    svg {
+      transition: all 0.5s ease-in-out;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      svg {
+        color: ${({ theme }) => theme.colors.background.white};
+        transform: rotate(180deg);
+      }
+
+      span {
+        color: ${({ theme }) => theme.colors.background.white};
+        /* text shadow */
+        text-shadow: 1px 1px 10px -2px ${({ theme }) => theme.colors.background.white};
+      }
     }
   }
 
   ul {
     display: flex;
     list-style: none;
+    justify-content: space-between;
+    width: 50%;
 
-    li{
+    li {
+      transition: all 0.3s ease-in-out;
+      border: 2px solid transparent;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      a {
+        font-family: ${({ theme }) => theme.fonts.fontFamilies.primary};
+        font-size: 1.2rem;
+        color: ${({ theme }) => theme.colors.background.whiteDark};
+        transition: all 0.3s ease-in-out;
+        text-decoration: none;
+      }
 
-        a{
-            text-transform: none;
+      &:hover {
+        border: 2px solid ${({ theme }) => theme.colors.background.whiteLight};
+        box-shadow: ${({ theme }) => theme.shadows.boxShadow3},
+          ${({ theme }) => theme.shadows.boxShadowInset3};
+
+        a {
+          color: ${({ theme }) => theme.colors.background.whiteLight};
         }
+      }
     }
   }
 `;
