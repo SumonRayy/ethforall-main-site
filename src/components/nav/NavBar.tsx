@@ -11,7 +11,7 @@ function NavBar() {
 
       <ul>
         <li>
-          <a href="#hero">The Idea</a>
+          <a href="#idea">The Idea</a>
         </li>
         <li>
           <a href="#hero">How to?</a>
@@ -43,7 +43,6 @@ const NavStyles = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex: 0.32;
     color: ${({ theme }) => theme.colors.background.whiteLight};
     transition: all 0.3s ease-in-out;
 

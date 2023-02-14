@@ -9,7 +9,7 @@ const SvgComponent = () => (
     height="1em"
   >
     <defs>
-      <style>{".cls-1{fill:#f5f5f5;fill-rule:evenodd}"}</style>
+      <style>{`.cls-1{fill:"current";fill-rule:evenodd}`}</style>
     </defs>
     <path
       className="cls-1"
