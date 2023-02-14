@@ -14,13 +14,13 @@ function NavBar() {
           <a href="#idea">The Idea</a>
         </li>
         <li>
-          <a href="#hero">How to?</a>
+          <a href="#how-to">How To?</a>
         </li>
         <li>
-          <a href="#hero">Team</a>
+          <a href="#team">Team</a>
         </li>
         <li>
-          <a href="#hero">Contact</a>
+          <a href="#contact">Contact</a>
         </li>
       </ul>
     </NavStyles>
