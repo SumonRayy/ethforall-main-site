@@ -210,7 +210,7 @@ const FirstSection = styled.section`
   backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(9px);
 
-  border-radius: 3rem;
+  border-radius: 3rem 3rem 0 0;
   border: 1px solid rgba(255, 255, 255, 0.18);
 
   overflow: hidden;
@@ -341,7 +341,7 @@ const SecondSection = styled.section`
     rgba(237, 237, 237, 0.001) 100%
   );
   opacity: 0.8;
-  transform: translateY(-5rem);
+  transform: translateY(0rem);
   z-index: 10;
 
   h1 {
