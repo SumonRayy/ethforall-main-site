@@ -25,6 +25,7 @@ const GlobalStyles = createGlobalStyle<
     width: 100%;
     display: flex;
     align-items: flex-start;    
+    overflow-x: hidden;
   }
 
   #root {    
