@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "init": "node spa.js",
+    "deploy": "yarn build && yarn init",
     "preview": "vite preview"
   },
   "dependencies": {
