@@ -340,7 +340,7 @@ const SecondSection = styled.section`
     rgba(237, 237, 237, 0.3) 80%,
     rgba(237, 237, 237, 0.001) 100%
   );
-  opacity: 0.8;
+
   transform: translateY(0rem);
   z-index: 10;
 

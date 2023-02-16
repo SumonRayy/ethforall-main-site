@@ -36,13 +36,29 @@ const theme = {
       whiteDark: "#c5c5c5",
       blackDark: "#0e0b11",
 
+      black01: "rgba(0, 0, 0, 0.1)",
+      black02: "rgba(0, 0, 0, 0.3)",
+      black03: "rgba(0, 0, 0, 0.5)",
+      black04: "rgba(0, 0, 0, 0.7)",
+
+      white01: "rgba(255, 255, 255, 0.1)",
+      white02: "rgba(255, 255, 255, 0.3)",
+      white03: "rgba(255, 255, 255, 0.5)",
+      white04: "rgba(255, 255, 255, 0.7)",
+
       bgLinearGradient1: `      
       radial-gradient(at 0% 39%, hsla(319,97%,44%,1) 0px, transparent 50%),
       radial-gradient(at 84% 33%, hsla(359,62%,50%,1) 0px, transparent 50%),
       radial-gradient(at 76% 90%, hsla(65,100%,50%,0.96) 0px, transparent 50%),
       radial-gradient(at 18% 96%, hsla(15,100%,50%,1) 0px, transparent 50%);`,
     },
-    text: {},
+    text: {
+      lightWhite: "rgba(255, 255, 255, 0.7)",
+      lightBlack: "rgba(0, 0, 0, 0.7)",
+
+      darkWhite: "rgba(255, 255, 255, 0.4)",
+      darkBlack: "rgba(0, 0, 0, 0.4)",
+    },
     border: {},
   },
   fonts: {
