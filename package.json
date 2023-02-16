@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "route": "node spa.js",
+    "deploy": "yarn build && yarn route",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -22,5 +24,9 @@
     "@vitejs/plugin-react": "^3.1.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/SumonRayy/ethforall-main-site.git",
+  "author": "SumonRayy <sumonrayy@gmail.com>",
+  "license": "MIT"
 }
