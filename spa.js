@@ -1,6 +1,6 @@
-const fs = require("fs");
+import { appendFile } from "fs";
 
-fs.appendFile("dist/_redirects", "/*    /index.html   200", function(err) {
+appendFile("dist/_redirects", "/*    /index.html   200", function(err) {
   if (err) throw err;
   console.log("Saved!");
 });
