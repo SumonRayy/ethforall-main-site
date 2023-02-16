@@ -4,7 +4,15 @@ import { FaEthereum, FaGithub, FaDiscord } from "react-icons/fa";
 import { TbCircles } from "react-icons/tb";
 import LinearMandalaWhite from "../assets/images/svgs/linear-mandala";
 
+import { useNavigate } from "react-router-dom";
+
 function Home() {
+  const navigate = useNavigate();
+
+  // const onClickNav = (path: string) => {
+  //   navigate(path);
+  // };
+
   return (
     <HomeStyles>
       <FirstSection>
@@ -14,7 +22,13 @@ function Home() {
         </div>
         <h1>
           zk-IDs for EVERYone, on ANY Chain
-          <button>Connect Wallet</button>
+          <button
+            onClick={() => {
+              navigate("/dashboard");
+            }}
+          >
+            Connect Wallet
+          </button>
         </h1>
       </FirstSection>
       <SecondSection id="idea">
