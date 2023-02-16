@@ -26,7 +26,7 @@ function Dashboard() {
         </div>
         <div className="left-panel__bottom">
           <ul>
-            <li>
+            <li className="active">
               <AiFillHome />
               <span>Home</span>
             </li>

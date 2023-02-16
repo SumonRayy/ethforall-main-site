@@ -448,10 +448,10 @@ const ThirdSection = styled.section`
         align-items: center;
         justify-content: center;
 
-        width: 10rem;
-        height: 10rem;
+        width: 160px;
+        height: 160px;
         margin: 2rem;
-        border-radius: 50%;
+        border-radius: 80px;
 
         font-size: 8rem;
         font-family: ${({ theme }) => theme.fonts.fontFamilies.tertiary};
