@@ -36,6 +36,9 @@ const theme = {
       whiteDark: "#c5c5c5",
       blackDark: "#0e0b11",
 
+      whiteDarker: "#a5a5a5",
+      blackDarker: "#1e1b21",
+
       black01: "rgba(0, 0, 0, 0.1)",
       black02: "rgba(0, 0, 0, 0.3)",
       black03: "rgba(0, 0, 0, 0.5)",
