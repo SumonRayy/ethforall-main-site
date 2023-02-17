@@ -9,10 +9,6 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const navigate = useNavigate();
 
-  // const onClickNav = (path: string) => {
-  //   navigate(path);
-  // };
-
   return (
     <HomeStyles>
       <FirstSection>
@@ -24,7 +20,7 @@ function Home() {
           zk-IDs for EVERYone, on ANY Chain
           <button
             onClick={() => {
-              navigate("/dashboard");
+              navigate("/verify");
             }}
           >
             Connect Wallet
