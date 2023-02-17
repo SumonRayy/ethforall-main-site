@@ -127,7 +127,7 @@ export const Icon = styled.svg`
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
   border: 0;
   clip: rect(0 0 0 0);
-  clippath: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -137,7 +137,10 @@ export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
   width: 1px;
 `;
 
-export const StyledCheckbox = styled.div`
+interface IStyledCheckboxProps {
+  checked: boolean;
+}
+export const StyledCheckbox = styled.div<IStyledCheckboxProps>`
   display: inline-block;
   width: 16px;
   height: 16px;
