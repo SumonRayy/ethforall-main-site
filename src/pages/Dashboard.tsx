@@ -1,109 +1,38 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { AiFillHome, AiFillFileAdd, AiFillCopy } from "react-icons/ai";
-import { BsFillGearFill } from "react-icons/bs";
-import { MdRemoveShoppingCart } from "react-icons/md";
-import { RiLogoutBoxRLine } from "react-icons/ri";
-import LinearMandalaWhite from "../assets/images/svgs/linear-mandala";
+
+import LeftPanel from "../views/dashboard/left.panel";
+import RightPanel from "../views/dashboard/right.panel";
 
 function Dashboard() {
+  const [currentPanel, setCurrentPanel] = useState(1);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    switch (currentPanel) {
+      case 1:
+        navigate("/dashboard/home");
+        break;
+      case 2:
+        navigate("/dashboard/manage");
+        break;
+      case 3:
+        navigate("/dashboard/close");
+        break;
+      default:
+        navigate("/dashboard/home");
+        break;
+    }
+  }, [currentPanel]);
+
   return (
     <StyledDashboard>
-      <div className="left-panel">
-        <div className="left-panel__top">
-          <div className="profile-image">
-            <img src="https://i.pravatar.cc/150?img=5" alt="profile" />
-          </div>
-          <div className="profile-info">
-            <h1>Jenny Lane</h1>
-            <h2>Wallet Connect</h2>
-            <span>
-              {"0x42E51D720BC438DB8F3571128579283D276B21BB".slice(0, 20) +
-                "..." +
-                "0x42E51D720BC438DB8F3571128579283D276B21BB".slice(38)}
-              <AiFillCopy />
-            </span>
-          </div>
-        </div>
-        <div className="left-panel__bottom">
-          <ul>
-            <li className="active">
-              <AiFillHome />
-              <span>Home</span>
-            </li>
-            <li>
-              <BsFillGearFill />
-              <span>Manage SBT</span>
-            </li>
-            <li>
-              <MdRemoveShoppingCart />
-              <span>Close Shop</span>
-            </li>
-            <li>
-              <AiFillFileAdd />
-              <span>New Something</span>
-            </li>
-            <li>
-              <RiLogoutBoxRLine />
-              <span>Disconnect</span>
-            </li>
-          </ul>
-        </div>
-        <span
-          style={{ margin: " 0 0 1rem 0", fontSize: "0.8rem" }}
-          className="footer"
-        >
-          Made with <span>❤</span> by GG
-        </span>
-      </div>
-      <div className="right-panel">
-        <div className="right-panel__top">
-          <h1>Welcome to Parichay</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          </p>
-          <LinearMandalaWhite />
-        </div>
-        <div className="right-panel__bottom">
-          <div className="right-panel__bottom__left">
-            <h1>Wallet</h1>
-            <div className="panel-item">
-              <p>Balance</p>
-              <h3>
-                <span>0</span> SBT
-              </h3>
-            </div>
-            <div className="panel-item">
-              <p>Balance</p>
-              <h3>
-                <span>0</span> SBT
-              </h3>
-            </div>
-            <div className="panel-item">
-              <p>Balance</p>
-              <h3>
-                <span>0</span> SBT
-              </h3>
-            </div>
-          </div>
-          <div className="right-panel__bottom__right">
-            <h1>Chain IDs</h1>
-            <ul>
-              <li>
-                1. <span>Chain ID: alpha</span>
-              </li>
-              <li>
-                2. <span>Chain ID: beta</span>
-              </li>
-              <li>
-                3. <span>Chain ID: gama</span>
-              </li>
-              <li>
-                4. <span>Chain ID: theta</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <LeftPanel
+        setCurrentPanel={setCurrentPanel}
+        currentPanel={currentPanel}
+      />
+      <RightPanel currentPanel={currentPanel} />
     </StyledDashboard>
   );
 }
@@ -310,6 +239,7 @@ const StyledDashboard = styled.div`
         color: ${({ theme }) => theme.colors.background.white};
         font-family: ${({ theme }) => theme.fonts.fontFamilies.quaternary};
         text-transform: uppercase;
+        text-align: center;
         text-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.5);
       }
 
