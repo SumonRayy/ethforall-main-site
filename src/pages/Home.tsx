@@ -1,210 +1,35 @@
 import React from "react";
-import NavBar from "../components/nav/NavBar";
-import { FaEthereum, FaGithub, FaDiscord } from "react-icons/fa";
-import { TbCircles } from "react-icons/tb";
-import LinearMandalaWhite from "../assets/images/svgs/linear-mandala";
+import styled from "styled-components";
+import HeroSection from "../views/home/hero.section";
+import IdeaSection from "../views/home/idea.section";
+import HowToSection from "../views/home/howTo.section";
+import TeamSection from "../views/home/team.section";
+import FooterSection from "../views/home/footer.section";
 
-import { useNavigate } from "react-router-dom";
-
-function Home() {
-  const navigate = useNavigate();
-
-  // const onClickNav = (path: string) => {
-  //   navigate(path);
-  // };
+function Home() {  
 
   return (
     <HomeStyles>
       <FirstSection>
-        <NavBar />
-        <div className="hero-logo">
-          <LinearMandalaWhite />
-        </div>
-        <h1>
-          zk-IDs for EVERYone, on ANY Chain
-          <button
-            onClick={() => {
-              navigate("/dashboard");
-            }}
-          >
-            Connect Wallet
-          </button>
-        </h1>
+        <HeroSection />
       </FirstSection>
       <SecondSection id="idea">
-        <h1>The Idea</h1>
-        <div className="para-section">
-          <LinearMandalaWhite />
-          <p>
-            The Project provides Zero Knowledge Based Identities to everyone and
-            offers its representation on any EVM compatible chain. This allows
-            for easy tokenization of the fact that a wallet address is not a
-            bot. Essentially extending the Sybil Resistance to all EVM
-            compatible chains and bringing in Accountability in the mix without
-            jeopardizing privacy and anonymity.
-            <br />
-            <button>Learn More</button>
-          </p>
-        </div>
+        <IdeaSection />
       </SecondSection>
       <ThirdSection id="how-to">
-        <h1>How To?</h1>
-        <p>
-          Just with these easy steps you can get your own zkSBT (yeah, that's
-          what we are calling it right now)
-        </p>
-        <div className="step-container">
-          <div className="step">
-            <div className="step-number">1</div>
-            <div className="step-content">
-              <h2>Connect</h2>
-              <p>
-                Connect your wallet to the website. We support Metamask, Wallet
-                Connect and Portis.
-              </p>
-            </div>
-          </div>
-          <div className="step">
-            <div
-              className="step-content"
-              style={{
-                alignItems: "flex-end",
-              }}
-            >
-              <h2>Verify</h2>
-              <p>Verify your Government Issued ID and Liveness Detection</p>
-            </div>
-            <div className="step-number">2</div>
-          </div>
-          <div className="step">
-            <div className="step-number">3</div>
-            <div className="step-content">
-              <h2>Collect</h2>
-              <p>Collect your Proof of Personhood n' zkSBT</p>
-            </div>
-          </div>
-        </div>
+        <HowToSection />
       </ThirdSection>
       <FourthSection id="team">
-        <h1>Team</h1>
-        <div className="team-container">
-          <div className="team-member">
-            <div className="team-member-image">
-              <img src="https://avatars.githubusercontent.com/u/38981107?v=4" />
-            </div>
-            <div className="team-member-name">Abhik</div>
-            <div className="team-member-role">Project Lead</div>
-            <LinearMandalaWhite />
-          </div>
-          <div className="team-member">
-            <div className="team-member-image">
-              <img src="https://avatars.githubusercontent.com/u/42205351?v=4" />
-            </div>
-            <div className="team-member-name">Amit</div>
-            <div className="team-member-role">Blockchain Developer</div>
-            <LinearMandalaWhite />
-          </div>
-          <div className="team-member">
-            <div className="team-member-image">
-              <img src="https://avatars.githubusercontent.com/u/74421964?v=4" />
-            </div>
-            <div className="team-member-name">Priyanshu</div>
-            <div className="team-member-role">Blockchain Developer</div>
-            <LinearMandalaWhite />
-          </div>
-          <div className="team-member">
-            <div className="team-member-image">
-              <img src="https://avatars.githubusercontent.com/u/96810668?v=4" />
-            </div>
-            <div className="team-member-name">Rahul</div>
-            <div className="team-member-role">BackEnd Developer</div>
-            <LinearMandalaWhite />
-          </div>
-          <div
-            className="team-member"
-            onClick={() => window.open("https://github.com/SumonRayy")}
-          >
-            <div className="team-member-image">
-              <img src="https://avatars.githubusercontent.com/u/53209811?v=4" />
-            </div>
-            <div className="team-member-name">Sumon</div>
-            <div
-              className="team-member-role"
-              style={{ textAlign: "center", bottom: "25%" }}
-            >
-              UI/UX + <br /> FrontEnd Developer
-            </div>
-            <LinearMandalaWhite />
-          </div>
-        </div>
+        <TeamSection />
       </FourthSection>
-      <FifthSection id="contact">
-        <h1>Contact</h1>
-        <div className="contact-container">
-          <form className="contact-form">
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <textarea placeholder="Message" />
-            <button>Send</button>
-          </form>
-          <TbCircles size={100} />
-          <div className="footer">
-            <div className="contact-info">
-              <div className="contact-info-item">
-                <FaGithub size={45} />
-              </div>
-              <div className="contact-info-item">
-                <FaGithub size={45} />
-              </div>
-              <div className="contact-info-item">
-                <FaGithub size={45} />
-              </div>
-              <div className="contact-info-item">
-                <FaGithub size={45} />
-              </div>
-              <div className="contact-info-item">
-                <FaGithub size={45} />
-              </div>
-              <div className="contact-info-item">
-                <FaGithub size={45} />
-              </div>
-              <div className="contact-info-item">
-                <FaGithub size={45} />
-              </div>
-              <div className="contact-info-item">
-                <FaGithub size={45} />
-              </div>
-              <div className="contact-info-item">
-                <FaGithub size={45} />
-              </div>
-              <div className="contact-info-item">
-                <FaGithub size={45} />
-              </div>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-              arcu elit, tempor et feugiat ut, ullamcorper in nulla. Mauris ut
-              lectus gravida, consequat ex a, pretium mauris. Proin id aliquet
-              metus. Aliquam gravida est ut purus rutrum, sed pretium lorem
-              placerat. Nunc eu tortor nec neque efficitur pellentesque ac ut
-              erat. Duis non sodales dolor. Phasellus vitae enim blandit,
-              placerat orci at, posuere metus. Morbi ac auctor felis, nec
-              lobortis eros. Duis sagittis sollicitudin arcu ac pulvinar.
-              Maecenas interdum euismod lorem, at euismod neque mattis
-              fermentum.
-              <br />
-              Made with ❤️ by GG Team
-            </p>
-          </div>
-        </div>
+      <FifthSection id="footer">
+        <FooterSection />
       </FifthSection>
     </HomeStyles>
   );
 }
 
 export default Home;
-
-import styled from "styled-components";
 
 const FirstSection = styled.section`
   display: flex;
