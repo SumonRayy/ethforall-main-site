@@ -1,10 +1,23 @@
 import React from "react";
 import NavBar from "../../components/nav/NavBar";
 import LinearMandalaWhite from "../../assets/images/svgs/linear-mandala";
-import { useNavigate } from "react-router-dom";
+
+import { useWeb3Modal } from "@web3modal/react";
+import { useWeb3ModalStore } from "../../store/web3Modal.store";
 
 export default function HeroSection() {
-  const navigate = useNavigate();
+  const { open } = useWeb3Modal();
+  const { toggleDrawer } = useWeb3ModalStore();
+
+  const handleClick = async () => {
+    try {
+      toggleDrawer();
+      await open();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <NavBar />
@@ -13,13 +26,7 @@ export default function HeroSection() {
       </div>
       <h1>
         zk-IDs for EVERYone, on ANY Chain
-        <button
-          onClick={() => {
-            navigate("/verify");
-          }}
-        >
-          Connect Wallet
-        </button>
+        <button onClick={handleClick}>Connect Wallet</button>
       </h1>
     </>
   );

@@ -5,6 +5,7 @@ import IdeaSection from "../views/home/idea.section";
 import HowToSection from "../views/home/howTo.section";
 import TeamSection from "../views/home/team.section";
 import FooterSection from "../views/home/footer.section";
+import { ConnectWalletModal } from "../portals/web3modal.portal";
 
 function Home() {
   // const onClickNav = (path: string) => {
@@ -13,6 +14,7 @@ function Home() {
 
   return (
     <HomeStyles>
+      <ConnectWalletModal />
       <FirstSection>
         <HeroSection />
       </FirstSection>
