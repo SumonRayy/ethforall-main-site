@@ -12,11 +12,16 @@
   },
   "dependencies": {
     "@types/styled-components": "^5.1.26",
+    "@web3modal/ethereum": "^2.1.1",
+    "@web3modal/react": "^2.1.1",
+    "ethers": "^5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.8.1",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "wagmi": "^0.11.5",
+    "zustand": "^4.3.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
