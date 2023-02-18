@@ -27,3 +27,7 @@ dist-ssr
 .DS_Store
 .DS_Store?
 .vscode
+
+# lock files
+yarn.lock
+package-lock.json
