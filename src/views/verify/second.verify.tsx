@@ -1,6 +1,7 @@
 import React from "react";
+import { IStepInterface } from "../../interfaces/verify.interfaces";
 
-function SecondVerifier() {
+function SecondVerifier({setVerifyStep}: IStepInterface) {
   return <div>SecondVerifier</div>;
 }
 

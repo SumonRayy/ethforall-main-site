@@ -27,9 +27,9 @@ function Verify() {
       <TopNav {...topNavProps} />
       {
         {
-          1: <FirstVerifier />,
-          2: <SecondVerifier />,
-          3: <ThirdVerifier />,
+          1: <FirstVerifier setVerifyStep={setCurrentStep}/>,
+          2: <SecondVerifier setVerifyStep={setCurrentStep}/>,
+          3: <ThirdVerifier setVerifyStep={setCurrentStep}/>,
         }[currentStep]
       }
     </VerifyContainer>

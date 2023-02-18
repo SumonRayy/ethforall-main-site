@@ -6,18 +6,18 @@ import {
 
 import { configureChains, createClient } from "wagmi";
 
-import { arbitrum, mainnet, polygon } from "wagmi/chains";
+import { goerli, arbitrumGoerli, polygonMumbai } from "wagmi/chains";
 
-const chains = [arbitrum, mainnet, polygon];
+const chains = [goerli, arbitrumGoerli, polygonMumbai];
 
 // Wagmi client
 export const { provider } = configureChains(chains, [
-  walletConnectProvider({ projectId: "2052fadc533edd004bcfe9bc3ac68527" }),
+  walletConnectProvider({ projectId: import.meta.env.VITE_W3M_PROJECT_ID }),
 ]);
 export const wagmiClient = createClient({
   autoConnect: true,
   connectors: modalConnectors({
-    projectId: "2052fadc533edd004bcfe9bc3ac68527",
+    projectId: import.meta.env.VITE_W3M_PROJECT_ID,
     version: "1", // or "2"
     appName: "web3Modal",
     chains,

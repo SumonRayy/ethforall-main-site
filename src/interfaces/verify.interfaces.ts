@@ -7,3 +7,7 @@ export interface ITopNavProps {
     [key: number]: boolean;
   };
 }
+
+export interface IStepInterface {
+  setVerifyStep: (x: number) => void
+}
