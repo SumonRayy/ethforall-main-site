@@ -4,6 +4,7 @@ export interface ILeftPanelListItem {
   icon: ReactElement;
   name: string;
   panel: number;
+  onClick?: () => void
 }
 
 export interface ILeftPanelProps {

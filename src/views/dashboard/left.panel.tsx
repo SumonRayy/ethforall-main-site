@@ -1,7 +1,8 @@
+import { useWeb3Modal } from "@web3modal/react";
 import React from "react";
 
 // importing logos
-import { AiFillHome, AiFillFileAdd, AiFillCopy } from "react-icons/ai";
+import { AiFillHome, AiFillCopy } from "react-icons/ai";
 import { BsFillGearFill } from "react-icons/bs";
 import { MdRemoveShoppingCart } from "react-icons/md";
 import { RiLogoutBoxRLine } from "react-icons/ri";
@@ -14,6 +15,7 @@ import {
 
 // main component
 function LeftPanel(props: ILeftPanelProps) {
+  const {open} = useWeb3Modal();
   const { currentPanel, setCurrentPanel } = props; // destructuring props
 
   // function to change panel
@@ -39,13 +41,9 @@ function LeftPanel(props: ILeftPanelProps) {
       panel: 3,
     },
     {
-      icon: <AiFillFileAdd />,
-      name: "New Something",
-      panel: 4,
-    },
-    {
       icon: <RiLogoutBoxRLine />,
       name: "Disconnect",
+      onClick: async () => await open(),
       panel: 5,
     },
   ];
@@ -59,7 +57,7 @@ function LeftPanel(props: ILeftPanelProps) {
             <li
               key={index}
               className={currentPanel === item.panel ? "active" : ""}
-              onClick={() => handlePanelChange(item.panel)}
+              onClick={() => item.onClick ? item.onClick() : handlePanelChange(item.panel)}
             >
               {item.icon}
               <span>{item.name}</span>
@@ -74,11 +72,10 @@ function LeftPanel(props: ILeftPanelProps) {
     <div className="left-panel">
       <div className="left-panel__top">
         <div className="profile-image">
-          <img src="https://i.pravatar.cc/150?img=5" alt="profile" />
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy9HjA-dO0Evv94Z3D9-rKQpmrRsEQEwuFyazGc-qw9xl8mZN_pYOvtglykt38dIv6UCY&usqp=CAU" alt="profile" />
         </div>
         <div className="profile-info">
-          <h1>Jenny Lane</h1>
-          <h2>Wallet Connect</h2>
+          <h2>Wallet Connected</h2>
           <span>
             {"0x42E51D720BC438DB8F3571128579283D276B21BB".slice(0, 20) +
               "..." +

@@ -4,43 +4,56 @@ import { useAccount, useNetwork, useSwitchNetwork } from "wagmi";
 import { StyledButton } from "../../components/buttons/buttons.styled";
 import { IStepInterface } from "../../interfaces/verify.interfaces";
 
+import popCode from "../../assets/qr/pop.json";
+import QRCode from "react-qr-code";
+import { useNavigate } from "react-router-dom";
+
 function ThirdVerifier({ setVerifyStep }: IStepInterface) {
-  const [step, setStep] = React.useState(1);
-  const { isConnected } = useAccount();
+  const [step, setStep] = React.useState(0);
   const { chain } = useNetwork();
-  const { chains, error, isLoading, pendingChainId, switchNetwork } =
+  const { chains, switchNetwork } =
     useSwitchNetwork();
-  const handleMint = async () => {
-    if(isConnected) {
-      
-    }
-  };
+  const navigate = useNavigate();
+
+  const handlePolygonId = () => {
+    window.open('https://platform-test.polygonid.com/claim-link/e63424f7-d4c4-4393-a247-410e9cd9f813','_blank');
+    setStep(1);
+  }
+
+  console.log("QR", popCode, chains);
   return (
     <StyledContainer>
       <h2>Mint thy zk-SBT</h2>
       {step === 0 && (
         <>
-          <p>Please scan the below QR with Polygon Wallet App</p>
+          <p>Please go to the link below and scan the QR with Polygon ID App</p>
+          <StyledButton primary={true} onClick={handlePolygonId}>Go</StyledButton>
         </>
       )}
       {step === 1 && (
         <>
-          <p>and for all that, here's your reward:</p>
-          {chain?.network !== "maticum" ? (
+          <p>and for all that, here's your reward (scan with Polygon ID App after you have received your claim):</p>
+          {chain?.network !== "maticmum" ? (
             <StyledButton
               primary={true}
               onClick={() =>
                 switchNetwork?.(
-                  chains.filter((chain) => chain.network === "maticum")[0].id
+                  chains.filter((chain) => chain.network === "maticmum")[0].id
                 )
               }
             >
               Switch to Polygon
             </StyledButton>
           ) : (
-            <StyledButton primary={true} onClick={handleMint}>
-              Mint
-            </StyledButton>
+            <>
+            <QRCode
+              size={256}
+              style={{ height: "auto", maxWidth: "50%", margin: '15px 0px' }}
+              value={JSON.stringify(popCode)}
+              viewBox={`0 0 256 256`}
+            />
+            <StyledButton primary={true} onClick={() => navigate('/dashboard/home')}>Go to Dashboard</StyledButton>
+</>
           )}
         </>
       )}
