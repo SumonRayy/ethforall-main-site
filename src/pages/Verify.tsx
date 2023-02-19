@@ -19,17 +19,19 @@ function Verify() {
   const topNavProps: ITopNavProps = {
     step,
   };
-
-  useEffect(() => {}, []);
+  const handleVerifyStep = (x: number) => {
+    setStep((prev) => ({ ...prev, [x]: true }));
+    setCurrentStep(x);
+  };
 
   return (
     <VerifyContainer>
       <TopNav {...topNavProps} />
       {
         {
-          1: <FirstVerifier />,
-          2: <SecondVerifier />,
-          3: <ThirdVerifier />,
+          1: <FirstVerifier setVerifyStep={handleVerifyStep} />,
+          2: <SecondVerifier setVerifyStep={handleVerifyStep} />,
+          3: <ThirdVerifier setVerifyStep={handleVerifyStep} />,
         }[currentStep]
       }
     </VerifyContainer>

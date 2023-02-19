@@ -26,15 +26,7 @@ const GlobalStyles = createGlobalStyle<
     display: flex;
     align-items: flex-start;    
     overflow-x: hidden;
-  }
-
-  #root {    
-    width: 100%;
-    min-height: 100vh;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   
   @keyframes rotate {
