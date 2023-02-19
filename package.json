@@ -11,6 +11,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@teachablemachine/pose": "^0.8.6",
+    "@tensorflow/tfjs": "3.7.0",
     "@types/styled-components": "^5.1.26",
     "@web3modal/ethereum": "^2.1.1",
     "@web3modal/react": "^2.1.1",

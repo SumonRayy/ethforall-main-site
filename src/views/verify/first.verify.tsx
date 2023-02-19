@@ -1,25 +1,20 @@
-import React, { ChangeEvent, FormEvent, FormEventHandler } from "react";
-import styled from "styled-components";
+import React, { ChangeEvent, FormEvent } from "react";
+
 import axios from "axios";
 
 import { FormContainer, StyledForm } from "../../components/forms/forms.styled";
 import { StyledButton } from "../../components/buttons/buttons.styled";
 import {
   StyledInputText,
-  CheckboxContainer,
-  HiddenCheckbox,
-  StyledCheckbox,
-  Icon,
 } from "../../components/input/inputs.styled";
 import { StyledSelect } from "../../components/input/select.styled";
 import { IStepInterface } from "../../interfaces/verify.interfaces";
 
-function FirstVerifier({setVerifyStep}: IStepInterface) {
+function FirstVerifier({ setVerifyStep }: IStepInterface) {
   const [selected, setSelected] = React.useState("0");
   const [value, setValue] = React.useState("");
   const [step, setStep] = React.useState(0);
   const [clientID, setClientID] = React.useState("");
-
 
   const handleSelect = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelected(event.target.value);
@@ -35,26 +30,34 @@ function FirstVerifier({setVerifyStep}: IStepInterface) {
         {
           headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Authorization": `Bearer ${import.meta.env.VITE_SUREPASS_API_TOKEN}`
+            Accept: "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_SUREPASS_API_TOKEN}`,
           },
         }
       );
-      if(response.data?.success && response.data?.data.category === "person") setVerifyStep(2)
+      if (response.data?.success && response.data?.data.category === "person")
+        setVerifyStep(2);
     }
-    if(selected === "1") {
-      const response = await axios.post(
-        "https://sandbox.surepass.io/api/v1/aadhaar-v2/generate-otp",
-        { id_number: value },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Authorization": `Bearer ${import.meta.env.VITE_SUREPASS_API_TOKEN}`
-          },
-        }
-      );
+    if (selected === "1") {
+      setStep(1)
+      // const response = await axios.post(
+      //   "https://sandbox.surepass.io/api/v1/aadhaar-v2/generate-otp",
+      //   { id_number: value },
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       Accept: "application/json",
+      //       Authorization: `Bearer ${import.meta.env.VITE_SUREPASS_API_TOKEN}`,
+      //     },
+      //   }
+      // );
     }
+  };
+
+  const handleSecondSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log("OTP Entered", value);
+    setVerifyStep(2);
   };
   return (
     <FormContainer>
@@ -86,6 +89,21 @@ function FirstVerifier({setVerifyStep}: IStepInterface) {
             {/*  */}
             <StyledButton type="submit" primary={true}>
               <span>Next</span>
+            </StyledButton>
+          </StyledForm>
+        </>
+      )}
+      {step === 1 && (
+        <>
+          <StyledForm onSubmit={handleSecondSubmit}>
+            <StyledInputText
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setValue(e.target.value)
+              }
+              placeholder="Please Enter the OTP Sent to your mobile"
+            />
+            <StyledButton type="submit" primary={true}>
+              <span>Submit</span>
             </StyledButton>
           </StyledForm>
         </>
