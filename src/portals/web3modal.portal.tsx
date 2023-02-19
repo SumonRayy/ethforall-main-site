@@ -30,16 +30,6 @@ export const ConnectWalletModal = () => {
     <Portal>
       <StyledModal ref={ref}>
         <Web3Modal
-          connectors={[
-            {
-              name: "WalletConnect",
-              url: "https://walletconnect.org/",
-              icon: "https://walletconnect.org/walletconnect-logo.svg",
-              description:
-                "Connect to Trust Wallet, Rainbow Wallet and more...",
-              supportedChainIds: [1, 3, 4, 5, 42, 100],
-            },
-          ]}
           projectId="2052fadc533edd004bcfe9bc3ac68527"
           ethereumClient={ethereumClient}
         />
