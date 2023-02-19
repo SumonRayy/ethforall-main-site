@@ -4,9 +4,7 @@ import axios from "axios";
 
 import { FormContainer, StyledForm } from "../../components/forms/forms.styled";
 import { StyledButton } from "../../components/buttons/buttons.styled";
-import {
-  StyledInputText,
-} from "../../components/input/inputs.styled";
+import { StyledInputText } from "../../components/input/inputs.styled";
 import { StyledSelect } from "../../components/input/select.styled";
 import { IStepInterface } from "../../interfaces/verify.interfaces";
 
@@ -39,25 +37,40 @@ function FirstVerifier({ setVerifyStep }: IStepInterface) {
         setVerifyStep(2);
     }
     if (selected === "1") {
-      setStep(1)
-      // const response = await axios.post(
-      //   "https://sandbox.surepass.io/api/v1/aadhaar-v2/generate-otp",
-      //   { id_number: value },
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       Accept: "application/json",
-      //       Authorization: `Bearer ${import.meta.env.VITE_SUREPASS_API_TOKEN}`,
-      //     },
-      //   }
-      // );
+      const response = await axios.post(
+        "https://sandbox.surepass.io/api/v1/aadhaar-v2/generate-otp",
+        { id_number: value },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_SUREPASS_API_TOKEN}`,
+          },
+        }
+      );
+      if (response.data.success) {
+        setClientID(response.data.data.client_id);
+        setStep(1);
+      }
     }
   };
 
-  const handleSecondSubmit = (e: FormEvent) => {
+  const handleSecondSubmit = async (e: FormEvent) => {
     e.preventDefault();
     console.log("OTP Entered", value);
-    setVerifyStep(2);
+    const response = await axios.post(
+      "https://sandbox.surepass.io/api/v1/aadhaar-v2/submit-otp",
+      { client_id: clientID, otp: value },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_SUREPASS_API_TOKEN}`,
+        },
+      }
+    );
+    if (response.data.success && response.data.data.client_id === clientID)
+      setVerifyStep(2);
   };
   return (
     <FormContainer>

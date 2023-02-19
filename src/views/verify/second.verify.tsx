@@ -10,6 +10,7 @@ const NUM_TEST = 5;
 function SecondVerifier({ setVerifyStep }: IStepInterface) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const positionRef = useRef<string>();
+  const verificationCountRef = useRef<number>();
   const [modelLoaded, setModelLoaded] = useState(false);
   const [predictionStatus, setPredictionStatus] = useState<IFaceClass>({
     prevClass: "",
@@ -19,7 +20,8 @@ function SecondVerifier({ setVerifyStep }: IStepInterface) {
 
   const [currentPose, setCurrentPose] = useState<string>("Loading...");
   positionRef.current = currentPose;
-  const [verificationCount, setVerificationCount] = useState(0);
+  const [verificationCount, setVerificationCount] = useState<number>(0);
+  verificationCountRef.current = verificationCount;
   const [verificationDone, setVerificationDone] = useState(false);
   const [step, setStep] = useState(0);
 
@@ -62,7 +64,8 @@ function SecondVerifier({ setVerifyStep }: IStepInterface) {
   async function loop() {
     webcam.update(); // update the webcam frame
     await predict();
-    if (verificationCount <= NUM_TEST) window.requestAnimationFrame(loop);
+    if (verificationCountRef.current! <= NUM_TEST)
+      window.requestAnimationFrame(loop);
   }
 
   async function predict() {
@@ -82,11 +85,11 @@ function SecondVerifier({ setVerifyStep }: IStepInterface) {
     // console.log("Predicted", predictedClass);
 
     if (predictedClass.className === positionRef.current) {
-      if (verificationCount >= NUM_TEST - 1) {
+      if (verificationCountRef.current! >= NUM_TEST - 1) {
         webcam.stop();
         setVerificationDone(true);
       }
-      console.log("Match", verificationCount, NUM_TEST)
+      console.log("Match", verificationCountRef.current, NUM_TEST);
       setVerificationCount((prev) => prev + 1);
     }
 
@@ -134,14 +137,13 @@ function SecondVerifier({ setVerifyStep }: IStepInterface) {
             <p>Please wait for the camera to appear on screen and then</p>
           )}
 
-          {modelLoaded ? (
+          {modelLoaded && !verificationDone && (
             <>
               <p>Please Turn your face to {currentPose} position.</p>
               <canvas ref={canvasRef} style={{ borderRadius: "50%" }}></canvas>
             </>
-          ) : (
-            <p>Loading...</p>
           )}
+          {!modelLoaded && <p>Loading...</p>}
         </>
       )}
       {(!modelLoaded || step === 0) && (
@@ -149,7 +151,14 @@ function SecondVerifier({ setVerifyStep }: IStepInterface) {
           <span>Start</span>
         </StyledButton>
       )}
-      {verificationDone && <p>Done :)</p>}
+      {verificationDone && (
+        <>
+        <p>You have passed the test.</p>
+        <StyledButton primary={true} onClick={() => setVerifyStep(3)}>
+          <span>Proceed</span>
+        </StyledButton>
+        </>
+      )}
     </StyledContainer>
   );
 }

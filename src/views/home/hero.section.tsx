@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export default function HeroSection() {
   const navigate = useNavigate();
   const { open } = useWeb3Modal();
-  const { isConnected, address } = useAccount();
+  const { isConnected } = useAccount();
 
   const handleClick = async () => {
     try {
